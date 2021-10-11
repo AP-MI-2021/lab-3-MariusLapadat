@@ -86,6 +86,7 @@ def NrPrim(n):
             return False
     return True
 
+
 def toateElementelePrime(lst):
     """
     Determina daca toate numerele dintr-o secventa a listei lst sunt prime
@@ -96,6 +97,7 @@ def toateElementelePrime(lst):
         if NrPrim(x) is False:
             return False
     return True
+
 
 def get_longest_all_primes(lst: list[int]):
     """
@@ -110,6 +112,16 @@ def get_longest_all_primes(lst: list[int]):
                 subsecventaMax1 = lst[i:j + 1]
     return subsecventaMax1
 
+
+def test_get_longest_all_primes():
+    assert get_longest_all_primes([12, 7, 3, 5, 6]) == [7, 3, 5]
+    assert get_longest_all_primes([2, 4, 6]) == [2]
+    assert get_longest_all_primes([8, 4, 6]) == []
+
+
+test_get_longest_all_primes()
+
+test_get_longest_all_primes()
 
 while True:
     printMenu()

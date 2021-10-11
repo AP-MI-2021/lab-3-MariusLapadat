@@ -3,7 +3,7 @@ def printMenu():
     print("2.Determinare cea mai lungă subsecvență cu proprietatea 5.")
     print("Pentru a inchide, introduce x")
 
-
+# x
 def citire_lista():
     lst = []
     n = int(input("Dati numarul de elemente din lista: "))

@@ -2,6 +2,7 @@ def printMenu():
     print("1.Citire date")
     print("2.Determinare cea mai lungă subsecvență cu proprietatea 5.")
     print("3.Determinare cea mai lungă subsecvență cu proprietatea 2.")
+    print("4.Determinare cea mai lungă subsecvență cu proprietatea 15.")
     print("Pentru a inchide, introduce x")
 
 
@@ -121,7 +122,57 @@ def test_get_longest_all_primes():
 
 test_get_longest_all_primes()
 
-test_get_longest_all_primes()
+
+def XlaK(n, k):
+    """
+    Determina daca numarul n poate fi scris ca si x**k
+    :param n: un element din lista
+    :param k:puterea lui n
+    :return True sau False:
+    """
+    for i in range(2, n // 2 + 1):
+        x = i
+        for j in range(1, k):
+            x = x * x
+        if x == n:
+            return True
+    return False
+
+
+def toateElementeleXlaK(lst, k):
+    """
+    Determina daca toate numerele dintr-o secventa a listei lst pot fi scrise ca si x**k
+    :param lst - lista cu numere:
+    :param k - puterea la care trebuie ridicat x pentru ca elementele listei sa fie de forma x**k:
+    :return True sau False:
+    """
+    for x in lst:
+        if XlaK(x,k) is False:
+            return False
+    return True
+
+
+def get_longest_powers_of_k(lst: list[int], k: int):
+    """
+    Determina cea mai lunga subsecventa de numere de forma x**k
+    :param lst - lista de numere:
+    :param k - int, puterea numerelor:
+    :return lista cu cea mai lunga subsecventa de numere de forma x**k din lst:
+    """
+    subsecventaMax2 = []
+    for i in range(len(lst)):
+        for j in range(len(lst)):
+            if toateElementeleXlaK(lst[i:j + 1],k) and len(lst[i:j + 1]) > len(subsecventaMax2):
+                subsecventaMax2 = lst[i:j + 1]
+    return subsecventaMax2
+
+
+def test_get_longest_powers_of_k():
+    assert get_longest_powers_of_k([16, 9, 25], 2) == [16, 9, 25]
+    assert get_longest_powers_of_k([6, 7, 8], 2) == []
+
+
+test_get_longest_powers_of_k()
 
 while True:
     printMenu()
@@ -134,5 +185,9 @@ while True:
     elif optiune == "3":
         l2 = get_longest_all_primes(l)
         print(l2[:])
+    elif optiune == "4":
+        k = int(input("Dati puterea k: "))
+        l3 = get_longest_powers_of_k(l, k)
+        print(l3[:])
     elif optiune == "x":
         break

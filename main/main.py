@@ -49,7 +49,6 @@ def toateElementelePalindroame(lst):
             return False
     return True
 
-
 def get_longest_all_palindromes(lst: list[int]):
     """
     Determina cea mai lunga subsecventa de numere de tip palindrom
@@ -63,6 +62,12 @@ def get_longest_all_palindromes(lst: list[int]):
                 subsecventaMax = lst[i:j + 1]
     return subsecventaMax
 
+def test_get_longest_all_palindromes():
+    assert get_longest_all_palindromes([1, 2, 89, 3, 4, 5, 6]) == [3, 4, 5, 6]
+    assert get_longest_all_palindromes([2, 3, 4, 1, 5]) == [2, 3, 4, 1, 5]
+
+
+test_get_longest_all_palindromes()
 
 while True:
     printMenu()
